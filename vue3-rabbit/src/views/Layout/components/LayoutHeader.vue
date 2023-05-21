@@ -1,13 +1,11 @@
 <script setup>
 import { onMounted, ref, reactive } from 'vue'
-import { getCategoryApi } from '@/apis/layout'
+import { storeToRefs } from 'pinia'
+import { useCategoryStore } from '@/stores/category'
 
-const categoryList = ref([])
-const getCategory = async () => {
-    const resp = await getCategoryApi()
-    console.log(`resp ==> `, resp);
-    categoryList.value = resp.result
-}
+const categoryStore = useCategoryStore()
+const { categoryList } = storeToRefs(categoryStore)
+const { getCategory } = categoryStore
 
 onMounted(() => {
     getCategory()
