@@ -1,10 +1,12 @@
+<script setup>
+import LayoutNav from './components/LayoutNav.vue'
+import LayoutHeader from './components/LayoutHeader.vue'
+import LayoutFooter from './components/LayoutFooter.vue'
+</script>
+
 <template>
-    <div>Index</div>
+    <LayoutNav />
+    <LayoutHeader />
     <RouterView />
-    <div class="test">test scss</div>
+    <LayoutFooter />
 </template>
-<style lang="scss">
-.test {
-    color: $priceColor;
-}
-</style>
