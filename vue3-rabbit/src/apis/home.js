@@ -17,3 +17,9 @@ export function getHomeHot() {
         url: 'home/hot'
     })
 }
+
+export function getHomeProduct() {
+    return httpInstance({
+        url:'home/goods'
+    })
+}
