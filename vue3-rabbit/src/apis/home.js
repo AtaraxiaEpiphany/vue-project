@@ -1,8 +1,15 @@
 import httpInstance from '@/utils/http'
 
-export function getHomeBanner() {
+export function getHomeBanner(params = {}) {
+    /**
+     * Default is 1
+     */
+    const { distributionSite = '1' } = params
     return httpInstance({
-        url: '/home/banner'
+        url: '/home/banner',
+        params: {
+            distributionSite
+        }
     })
 }
 
@@ -20,6 +27,6 @@ export function getHomeHot() {
 
 export function getHomeProduct() {
     return httpInstance({
-        url:'home/goods'
+        url: 'home/goods'
     })
 }
