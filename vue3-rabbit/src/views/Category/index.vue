@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { getCategoryApi } from '@/apis/category'
+import GoodsItem from '../Home/components/GoodsItem.vue'
 import { getHomeBanner } from '@/apis/home'
 /**
  * To access the router or the route inside the setup function, call the useRouter or useRoute
@@ -46,6 +47,26 @@ onMounted(() => {
                         <img :src="url.imgUrl" alt="">
                     </el-carousel-item>
                 </el-carousel>
+            </div>
+            <!-- 分类列表 -->
+            <div class="sub-list">
+                <h3>全部分类</h3>
+                <ul>
+                    <li v-for="i in categoryData.children" :key="i.id">
+                        <RouterLink to="/">
+                            <img :src="i.picture" />
+                            <p>{{ i.name }}</p>
+                        </RouterLink>
+                    </li>
+                </ul>
+            </div>
+            <div class="ref-goods" v-for="item in categoryData.children" :key="item.id">
+                <div class="head">
+                    <h3>- {{ item.name }}-</h3>
+                </div>
+                <div class="body">
+                    <GoodsItem v-for="good in item.goods" :good="good" :key="good.id" />
+                </div>
             </div>
         </div>
     </div>
