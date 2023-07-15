@@ -31,6 +31,24 @@ const tabChange = () => {
   getCategoryList()
 }
 
+const disabled = ref(false)
+const load = async () => {
+  params.value.page++
+  // const previousList = categoryList.value
+  const resp = await getSubCategoryAPI(params.value)
+  // categoryList.value = previousList.concat(resp.result.items)
+  /**
+   * Recommand.  Destructing assignment.
+   */
+  categoryList.value = [...categoryList.value, ...resp.result.items]
+  if (categoryList.value.length === resp.result.counts) {
+    disabled.value = true
+    console.log(`scroll disabled ==> `, disabled);
+  }
+  // console.log(`subcategory list ==> `, categoryList)
+
+
+}
 onMounted(() => {
   getCategoryList()
 })
@@ -54,7 +72,7 @@ onMounted(() => {
         <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
         <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
       </el-tabs>
-      <div class="body">
+      <div class="body" v-infinite-scroll="load" :infinite-scroll-disabled="disabled">
         <!-- 商品列表 -->
         <GoodsItem v-for="good in categoryList" :good="good" :key="good.id" />
       </div>

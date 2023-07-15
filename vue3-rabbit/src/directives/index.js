@@ -15,8 +15,8 @@ export const lazyLoadPlugin = {
              * @param {*} prevVnode the VNode representing the bound element from the previous render. Only available in the beforeUpdate and updated hooks.
              */
             mounted(el, binding, vnode, prevVnode) {
-                console.log(`lazy el ==> `, el)
-                console.log(`lazy binding ==> `, binding)
+                // console.log(`lazy el ==> `, el)
+                // console.log(`lazy binding ==> `, binding)
                 const { stop } = useIntersectionObserver(
                     el,
                     ([{ isIntersecting }], observerElement) => {
