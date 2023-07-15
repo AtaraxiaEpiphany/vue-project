@@ -26,6 +26,10 @@ const getCategoryList = async () => {
   const resp = await getSubCategoryAPI(params.value)
   categoryList.value = resp.result.items
 }
+const tabChange = () => {
+  params.value.page = 1
+  getCategoryList()
+}
 
 onMounted(() => {
   getCategoryList()
@@ -45,7 +49,7 @@ onMounted(() => {
       </el-breadcrumb>
     </div>
     <div class="sub-container">
-      <el-tabs>
+      <el-tabs v-model="params.sortField" @tab-change="tabChange">
         <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
         <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
         <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
