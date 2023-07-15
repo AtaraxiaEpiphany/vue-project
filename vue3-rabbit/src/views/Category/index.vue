@@ -1,8 +1,9 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { getCategoryApi } from '@/apis/category'
 import GoodsItem from '../Home/components/GoodsItem.vue'
 import { getHomeBanner } from '@/apis/home'
+import { useBanner } from '@/views/Category/composables/useBanner'
+import { useCategory } from '@/views/Category/composables/useCategory'
 /**
  * To access the router or the route inside the setup function, call the useRouter or useRoute
  */
@@ -16,29 +17,14 @@ import { useRouter, useRoute, onBeforeRouteUpdate } from 'vue-router'
 onBeforeRouteUpdate(async (to, from) => {
     console.log(`Category route to ==> `, to)
     console.log(`Category route from ==>`, from)
-    getCategory(to.params.id)
 })
 
-const route = useRoute()
-const router = useRouter()
-const categoryData = ref({})
-const bannerUrls = ref()
-const getCategory = async (id = route.params.id) => {
-    const resp = await getCategoryApi(id)
-    categoryData.value = resp.result
-}
-const getBanner = async () => {
-    const resp = await getHomeBanner({
-        distributionSite: '2'
-    })
-    bannerUrls.value = resp.result
-}
-onMounted(() => {
-    getCategory()
-    getBanner()
-    console.log(`route ==> `, route)
-    console.log(`router ==> `, router)
-})
+
+
+const { bannerUrls, getBanner } = useBanner()
+const { categoryData, getCategory } = useCategory()
+
+
 </script>
 
 <template>
