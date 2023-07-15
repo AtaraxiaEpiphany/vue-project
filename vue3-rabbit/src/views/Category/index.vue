@@ -1,7 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
 import GoodsItem from '../Home/components/GoodsItem.vue'
-import { getHomeBanner } from '@/apis/home'
 import { useBanner } from '@/views/Category/composables/useBanner'
 import { useCategory } from '@/views/Category/composables/useCategory'
 /**
@@ -21,8 +19,8 @@ onBeforeRouteUpdate(async (to, from) => {
 
 
 
-const { bannerUrls, getBanner } = useBanner()
-const { categoryData, getCategory } = useCategory()
+const { bannerUrls, } = useBanner()
+const { categoryData } = useCategory()
 
 
 </script>
@@ -50,7 +48,7 @@ const { categoryData, getCategory } = useCategory()
                 <h3>全部分类</h3>
                 <ul>
                     <li v-for="i in categoryData.children" :key="i.id">
-                        <RouterLink to="/">
+                        <RouterLink :to="`/category/sub/${i.id}`">
                             <img :src="i.picture" />
                             <p>{{ i.name }}</p>
                         </RouterLink>
