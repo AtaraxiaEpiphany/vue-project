@@ -6,7 +6,7 @@ export const useCategoryStore = defineStore('category', () => {
     const categoryList = ref([])
     const getCategory = () => {
         getCategoryApi().then(resp => {
-            console.log(`resp ==> `, resp);
+            console.log(`category list result ==> `, resp.result);
             categoryList.value = resp.result
         })
     }

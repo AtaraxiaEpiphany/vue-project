@@ -10,6 +10,8 @@ import HeaderFix from './components/HeaderFix.vue'
     <HeaderFix />
     <LayoutNav />
     <LayoutHeader />
+    <!-- 添加key 可以强制替换一个元素或者组件  而不是复用他 -->
+    <!-- <RouterView :key="$route.fullPath" /> -->
     <RouterView />
     <LayoutFooter />
 </template>

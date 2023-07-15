@@ -6,13 +6,24 @@ import { getHomeBanner } from '@/apis/home'
 /**
  * To access the router or the route inside the setup function, call the useRouter or useRoute
  */
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute, onBeforeRouteUpdate } from 'vue-router'
+/**
+ * The same component instance will be reused.
+ * This also means that the lifecycle hooks of the component will not be called.
+ * 1. Watch route.param
+ * 2. Use beforeRouteUpdate.(recommand)
+ */
+onBeforeRouteUpdate(async (to, from) => {
+    console.log(`Category route to ==> `, to)
+    console.log(`Category route from ==>`, from)
+    getCategory(to.params.id)
+})
+
 const route = useRoute()
 const router = useRouter()
 const categoryData = ref({})
 const bannerUrls = ref()
-const getCategory = async () => {
-    const id = route.params.id
+const getCategory = async (id = route.params.id) => {
     const resp = await getCategoryApi(id)
     categoryData.value = resp.result
 }
