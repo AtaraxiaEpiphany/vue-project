@@ -31,6 +31,18 @@ const rules = {
         }
     }]
 }
+const formRef = ref(null)
+
+const login = () => {
+    formRef.value.validate(valid => {
+        if (valid) {
+
+        } else {
+
+        }
+    })
+}
+
 </script>
 
 
@@ -55,7 +67,8 @@ const rules = {
                 </nav>
                 <div class="account-box">
                     <div class="form">
-                        <el-form :model="form" :rules="rules" label-position="right" label-width="60px" status-icon>
+                        <el-form :model="form" :rules="rules" :ref="formRef" label-position="right" label-width="60px"
+                            status-icon>
                             <el-form-item prop="account" label="账户">
                                 <el-input v-model="form.account" />
                             </el-form-item>
