@@ -1,4 +1,6 @@
 import axios from "axios"
+import { ElMessage } from 'element-plus'
+import 'element-plus/theme-chalk/el-message.css'
 //Axios instance
 const httpInstance = axios.create({
     baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
@@ -21,6 +23,10 @@ httpInstance.interceptors.response.use(response => {
 }, error => {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
+    ElMessage({
+        type: 'error',
+        message: error.response.data.message
+    })
     return Promise.reject(error)
 })
 export default httpInstance
