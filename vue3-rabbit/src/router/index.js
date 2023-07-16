@@ -4,6 +4,7 @@ import Login from '@/views/Login/index.vue'
 import Home from '@/views/Home/index.vue'
 import Category from '@/views/Category/index.vue'
 import SubCategory from '@/views/SubCategory/index.vue'
+import Deatail from '@/views/Detail/index.vue'
 // Define some routes
 // Each route should map to a component.
 const routes = [
@@ -23,6 +24,10 @@ const routes = [
       {
         path: 'category/sub/:id',
         component: SubCategory
+      },
+      {
+        path: 'detail/:id',
+        component: Deatail
       },
     ]
   },
