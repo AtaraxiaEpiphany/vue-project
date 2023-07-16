@@ -12,4 +12,9 @@ export const useUserStore = defineStore('user', () => {
         userInfo,
         getUserInfo,
     }
+}, {
+    /**
+     * Add the persist option to the store you want to be persisted:
+     */
+    persist: true,
 })
