@@ -2,7 +2,15 @@
 import { ref, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const userStore = useUserStore()
+// const { userInfo } = storeToRefs(userStore)
+const { clearInfo } = userStore
+const logout = () => {
+    userStore.clearInfo()
+    router.push('/login')
+}
 </script>
 
 <template>
@@ -16,7 +24,7 @@ const userStore = useUserStore()
                         </a>
                     </li>
                     <li>
-                        <el-popconfirm title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消">
+                        <el-popconfirm title="确认退出吗?" @confirm="logout" confirm-button-text="确认" cancel-button-text="取消">
                             <template #reference>
                                 <a href="javascript:;">退出登录</a>
                             </template>

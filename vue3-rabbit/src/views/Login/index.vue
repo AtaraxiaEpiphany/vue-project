@@ -10,7 +10,7 @@ const router = useRouter()
 const form = ref({
     account: 'xiaotuxian001',
     password: '123456',
-    agree: false,
+    agree: true,
 })
 const rules = {
     account: [{
