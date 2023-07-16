@@ -2,6 +2,11 @@ import axios from "axios"
 import { useUserStore } from "@/stores/user"
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
+/**
+ * Warn:inject() can only be used inside setup() or functional components.
+ */
+// import { useRouter } from 'vue-router'
+import router from "@/router"
 //Axios instance
 const httpInstance = axios.create({
     baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
@@ -33,6 +38,15 @@ httpInstance.interceptors.response.use(response => {
         type: 'error',
         message: error.response.data.message
     })
+    /**
+     * Deal 401 token.
+     */
+    console.log(`Error response ==> `, error)
+    if (error.response.status === 401) {
+        const userStore = useUserStore()
+        router.push('/login')
+        userStore.clearInfo()
+    }
     return Promise.reject(error)
 })
 export default httpInstance
