@@ -18,5 +18,9 @@ app.use(router)
 import { lazyLoadPlugin } from '@/directives/index'
 app.use(lazyLoadPlugin)
 
+
+import { componentPlugin } from '@/components/index'
+app.use(componentPlugin)
+
 app.mount('#app')
 
