@@ -12,6 +12,10 @@ const selectAll = (selected) => {
     cartStore.selectAll(selected)
 }
 
+const deleteCart = (id) => {
+    cartList.value = cartList.value.filter((item) => item.skuId !== id)
+}
+
 </script>
 
 <template>
@@ -60,7 +64,7 @@ const selectAll = (selected) => {
                             <td class="tc">
                                 <p>
                                     <el-popconfirm title="确认删除吗?" confirm-button-text="确认" cancel-button-text="取消"
-                                        @confirm="cartStore.deleteCart(i.skuId)">
+                                        @confirm="deleteCart(i.skuId)">
                                         <template #reference>
                                             <a href="javascript:;">删除</a>
                                         </template>
