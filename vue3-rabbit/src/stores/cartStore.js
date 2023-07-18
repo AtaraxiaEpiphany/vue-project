@@ -7,7 +7,7 @@ export const useCartStore = defineStore('cart', () => {
         const item = cartList.value.find((item) =>
             goods.skuId === item.skuId
         )
-        console.log(`item ==> `, item);
+        // console.log(`item ==> `, item);
         if (item) {
             item.count += goods.count
         } else {

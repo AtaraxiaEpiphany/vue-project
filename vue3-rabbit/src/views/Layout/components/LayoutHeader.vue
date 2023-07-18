@@ -1,4 +1,5 @@
 <script setup>
+import HeaderCart from './HeaderCart.vue'
 import { onMounted, ref, reactive } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useCategoryStore } from '@/stores/category'
@@ -28,7 +29,7 @@ onMounted(() => {
                 <input type="text" placeholder="搜一搜">
             </div>
             <!-- 头部购物车 -->
-
+            <HeaderCart></HeaderCart>
         </div>
     </header>
 </template>
