@@ -7,6 +7,10 @@ const singleCheck = (skuId, selected) => {
     cartStore.singleCheck(skuId, selected)
 }
 
+const selectAll = (selected) => {
+    cartStore.selectAll(selected)
+}
+
 </script>
 
 <template>
@@ -17,7 +21,7 @@ const singleCheck = (skuId, selected) => {
                     <thead>
                         <tr>
                             <th width="120">
-                                <el-checkbox />
+                                <el-checkbox :model-value="cartStore.isAll" @change="selectAll" />
                             </th>
                             <th width="400">商品信息</th>
                             <th width="220">单价</th>
@@ -55,7 +59,7 @@ const singleCheck = (skuId, selected) => {
                             <td class="tc">
                                 <p>
                                     <el-popconfirm title="确认删除吗?" confirm-button-text="确认" cancel-button-text="取消"
-                                        @confirm="delCart(i)">
+                                        @confirm="cartStore.deleteCart(i.skuId)">
                                         <template #reference>
                                             <a href="javascript:;">删除</a>
                                         </template>
