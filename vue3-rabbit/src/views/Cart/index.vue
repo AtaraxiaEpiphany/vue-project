@@ -1,7 +1,8 @@
 <script setup>
 import { useCartStore } from '@/stores/cartStore'
+import { storeToRefs } from 'pinia'
 const cartStore = useCartStore()
-const { cartList } = cartStore
+const { cartList } = storeToRefs(cartStore)
 
 const singleCheck = (skuId, selected) => {
     cartStore.singleCheck(skuId, selected)
