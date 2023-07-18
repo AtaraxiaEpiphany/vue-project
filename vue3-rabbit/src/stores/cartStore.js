@@ -45,6 +45,21 @@ export const useCartStore = defineStore('cart', () => {
         cartList.value.forEach(item => item.select = selected)
     }
 
+    const selectedCount = computed(() => {
+        return cartList.value
+            .filter(item => item.select)
+            .reduce((previous, current) => {
+                return previous + current.count
+            }, 0)
+    })
+
+    const selectedPrice = computed(() => {
+        return cartList.value
+            .filter(item => item.select)
+            .reduce((previous, current) => {
+                return previous + current.count * current.price
+            }, 0)
+    })
     return {
         cartList,
         addCart,
@@ -53,7 +68,9 @@ export const useCartStore = defineStore('cart', () => {
         cartPrice,
         singleCheck,
         isAll,
-        selectAll
+        selectAll,
+        selectedCount,
+        selectedPrice,
     }
 }, {
     persist: true
