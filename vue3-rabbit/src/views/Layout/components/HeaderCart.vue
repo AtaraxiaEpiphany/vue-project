@@ -37,7 +37,7 @@ const { cartList } = storeToRefs(cartStroe)
                     <p>共 {{ cartStroe.cartCount }} 件商品</p>
                     <p>&yen; {{ cartStroe.cartPrice }} </p>
                 </div>
-                <el-button size="large" type="primary">去购物车结算</el-button>
+                <el-button @click="$router.push('/cartlist')" size="large" type="primary">去购物车结算</el-button>
             </div>
         </div>
     </div>

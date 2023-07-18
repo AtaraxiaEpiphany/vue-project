@@ -29,12 +29,20 @@ export const useCartStore = defineStore('cart', () => {
             return accumulator + current.count * current.price
         }, 0)
     })
+
+    const singleCheck = (skuId, selected) => {
+        const item = cartList.value.find((item) =>
+            skuId === item.skuId
+        )
+        item.select = selected
+    }
     return {
         cartList,
         addCart,
         deleteCart,
         cartCount,
         cartPrice,
+        singleCheck,
     }
 }, {
     persist: true
