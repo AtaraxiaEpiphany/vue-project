@@ -2,6 +2,8 @@ import { defineStore, storeToRefs } from 'pinia'
 import { ref, computed } from 'vue'
 import { useUserStore } from '@/stores/user'
 import { delCartAPI, findNewCartListAPI, insertCartAPI } from '@/apis/cart'
+
+
 export const useCartStore = defineStore('cart', () => {
     const userStore = useUserStore()
     const isLogin = computed(() => userStore.userInfo.token)
@@ -79,6 +81,11 @@ export const useCartStore = defineStore('cart', () => {
                 return previous + current.count * current.price
             }, 0)
     })
+
+    const clearCartList = () => {
+        cartList.value = []
+    }
+
     return {
         cartList,
         addCart,
@@ -90,6 +97,8 @@ export const useCartStore = defineStore('cart', () => {
         selectAll,
         selectedCount,
         selectedPrice,
+        clearCartList,
+        updateNewList,
     }
 }, {
     persist: true
