@@ -1,5 +1,5 @@
 <script setup>
-import { useCartStore } from '@/stores/cartStore'
+import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
 import { computed, watch, ref } from 'vue'
 const cartStroe = useCartStore()
