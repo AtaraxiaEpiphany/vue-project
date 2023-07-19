@@ -9,10 +9,10 @@
 </script>
 
 <template>
-  <!-- <h1>plain:{{ countStore.count }}</h1>
-  <h1>reactive:{{ count }}</h1>
+  <!-- <h1>countStore.count:{{ countStore.count }}</h1>
+  <h1>reactive count:{{ count }}</h1>
   <button @click="countStore.increment">Increase plain</button>
-  <button @click="increase">Increase reactive</button> -->
+  <button @click="count++">Increase reactive</button> -->
   <RouterView />
 </template>
 
