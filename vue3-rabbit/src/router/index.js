@@ -6,6 +6,7 @@ import Category from '@/views/Category/index.vue'
 import SubCategory from '@/views/SubCategory/index.vue'
 import Deatail from '@/views/Detail/index.vue'
 import CartList from '@/views/Cart/index.vue'
+import Checkout from '@/views/Checkout/index.vue'
 // Define some routes
 // Each route should map to a component.
 const routes = [
@@ -33,6 +34,10 @@ const routes = [
       {
         path: 'cartlist',
         component: CartList
+      },
+      {
+        path: 'checkout',
+        component: Checkout
       },
     ]
   },
